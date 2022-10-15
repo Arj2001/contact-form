@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <div class="row g-3">
+                <div *ngFor="let i of contactData.data; let x =index" class="col col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3">
+                    <div class="card">
+                        <div class="card-header">
+                           # {{i.id}}
+                        </div>
+                        <img src="{{i.image}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.name}}</h5>
+                          <p class="card-text"><span class="fw-bold">Email : </span><a href="mailto:{{i.email}}">{{i.email}}</a></p>
+                          <p class="card-text"><span class="fw-bold">Vat : </span><a href="tel:{{i.vat}}">{{i.vat}}</a></p>
+                          <p class="card-text"><span class="fw-bold">Mobile : </span><a href="tel:{{i.phone}}">{{i.phone}}</a></p>
+                          <p class="card-text"><span class="fw-bold">Addresses :</span></p>
+                          <div *ngFor="let j of i.addresses;let k = index">
+                            <div>
+                                 <!-- Button trigger modal -->
+                            <div >
+                                <button type="button" class="btn btn-dark m-1" data-bs-toggle="modal" attr.data-bs-target="#exampleModal{{x*100+k+1}}">
+                                Address {{k+1}} </button>
+                            </div>
+                            
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{x*100+k+1}}" tabindex="-1" attr.aria-labelledby="exampleModalLabel{{x*100+k+1}}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel{{x*100+k+1}}">Address {{k+1}}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="card-text">House No. :{{j.buildingNumber}}</p>
+                                        <p class="card-text">{{j.street}}</p>
+                                        <p class="card-text">{{j.streetName}}</p>
+                                        <p class="card-text">Zip : {{j.zipcode}}</p>
+                                        <p class="card-text">Country : {{j.country}} ({{j.county_code}})</p>
+                                        <p class="card-text">Latitude : {{j.latitude}}</p>
+                                        <p class="card-text">Longitude : {{j.longitude}}</p>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                          </div>                          
+                            
+                          <p class="card-text"><span class="fw-bold">Website : </span><a href="{{i.website}}">{{i.website}}</a></p>
+                          <p class="card-text"><span class="fw-bold">Country : </span>{{i.country}}</p>
+                          <p class="card-text"><span class="fw-bold">Contact Details : </span><a href="" data-bs-toggle="modal" attr.data-bs-target="#contactModal{{(x+1)*1000}}">here</a></p>
+                          <!-- Modal -->
+                          <div class="modal fade" id="contactModal{{(x+1)*1000}}" tabindex="-1" attr.aria-labelledby="contactModalLabel{{(x+1)*1000}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{i.contact.image}}" class="card-img-top" alt="...">
+                                    <p class="card-text"><span class="fw-bold">Name :{{i.contact.firstname}} {{i.contact.lastname}}</span></p>
+                                    <p class="card-text"><span class="fw-bold">Email : </span><a href="mailto:{{i.contact.email}}">{{i.contact.email}}</a></p>
+                                    <p class="card-text"><span class="fw-bold">Mobile : </span><a href="tel:{{i.contact.phone}}">{{i.contact.phone}}</a></p>
+                                    <p class="card-text"><span class="fw-bold">Mobile : </span><a href="tel:{{i.contact.phone}}">{{i.contact.phone}}</a></p>
+                                    <p class="card-text"><span class="fw-bold">BirthDay : </span>{{i.contact.bithday}}</p>
+                                    <p class="card-text"><span class="fw-bold">Gender : </span>{{i.contact.gender}}</p>
+                                    <p class="card-text">House No. :{{i.contact.address.buildingNumber}}</p>
+                                    <p class="card-text">{{i.contact.address.street}}</p>
+                                    <p class="card-text">{{i.contact.address.streetName}}</p>
+                                    <p class="card-text">Zip : {{i.contact.address.zipcode}}</p>
+                                    <p class="card-text">Country : {{i.contact.address.country}} ({{i.contact.address.county_code}})</p>
+                                    <p class="card-text">Latitude : {{i.contact.address.latitude}}</p>
+                                    <p class="card-text">Longitude : {{i.contact.address.longitude}}</p>
+                                    <p class="card-text"><span class="fw-bold">Website : </span><a href="{{i.contact.website}}">{{i.website}}</a></p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                          
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
